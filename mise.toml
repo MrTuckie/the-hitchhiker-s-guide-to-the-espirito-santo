@@ -1,0 +1,8 @@
+[tools]
+node = "lts"
+python = "3.12"
+uv = "0.9.26" # pin an exact patch for reproducibility (change as desired)
+
+[env]
+# Automatically create + activate a venv at ./.venv when you enter this directory
+_.python.venv = { path = "backend/.venv", create = true }

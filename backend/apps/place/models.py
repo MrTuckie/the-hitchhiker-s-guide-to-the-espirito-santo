@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+# As relações
+# aaaaaaaaaaaaaa 
+# caraca
+
+class Place(models.Model):
+    name = models.CharField(max_length=30)
+    activity = None
+    posts = None

@@ -1,10 +1,10 @@
 from django.db import models
 
 # As relações
-# aaaaaaaaaaaaaa 
+# A place must have zero or n activities
+# An activity must have a place
 # caraca
+
 
 class Place(models.Model):
     name = models.CharField(max_length=30)
-    activity = None
-    posts = None

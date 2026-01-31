@@ -25,6 +25,9 @@ from rest_framework import permissions, viewsets
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
 
+from apps.post.api.views import PostViewSet
+from apps.activity.api.views import ActivityViewSet
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -62,6 +65,8 @@ ROUTER = DefaultRouter()
 ROUTER.register(r"users", UserViewSet)  # OK
 ROUTER.register(r"groups", GroupViewSet)  # OK
 ROUTER.register(r"places", PlaceViewSet)
+ROUTER.register(r"posts", PostViewSet)
+ROUTER.register(r"activities", ActivityViewSet)
 
 
 urlpatterns = [

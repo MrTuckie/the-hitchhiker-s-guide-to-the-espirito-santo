@@ -16,11 +16,21 @@ de humano para humanos.
 Para a primeira versão, para o cachorro quente ser um cachorro quente, eu vou precisar
 que o sistema tenha:
 
-- Um crud de lugares;
-- Um crud de atividades dos lugares;
-- Um crud de posts descritivos sobre os lugares.
+- [x] Um crud de lugares;
+- [x] Um crud de atividades dos lugares;
+- [x] Um crud de posts descritivos sobre os lugares.
+- [ ] adicionar o endereço dos lugares e do usuário
+- user react no frontend
+- um sistema mínimo de votação para elencar os posts
 
 Naturalmente, eu teria que colocar na mão as informações. Entretanto, é o mínimo cachorro quente possível.
+
+### v.2.0
+
+- fazer com que as atividades sejam buscadas diretamente do instagram
+  e do google maps
+
+---
 
 > And why is that?
 

@@ -20,46 +20,12 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from apps.place.api.views import PlaceViewSet
 from django.contrib.auth.models import Group, User
-from rest_framework import permissions, viewsets
-
-from django.contrib.auth.models import Group, User
-from rest_framework import serializers
+from rest_framework import permissions, viewsets, serializers
+from apps.user_profile.api.views import UserViewSet, GroupViewSet
 
 from apps.post.api.views import PostViewSet
 from apps.activity.api.views import ActivityViewSet
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ["url", "username", "email", "groups"]
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ["url", "name"]
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-
-    queryset = User.objects.all().order_by("-date_joined")
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-
-    queryset = Group.objects.all().order_by("name")
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
+from apps.vote.api.views import VoteViewSet
 
 ROUTER = DefaultRouter()
 ROUTER.register(r"users", UserViewSet)  # OK
@@ -67,6 +33,7 @@ ROUTER.register(r"groups", GroupViewSet)  # OK
 ROUTER.register(r"places", PlaceViewSet)
 ROUTER.register(r"posts", PostViewSet)
 ROUTER.register(r"activities", ActivityViewSet)
+ROUTER.register(r"votes", VoteViewSet)
 
 
 urlpatterns = [

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "apps.place",
     "apps.activity",
     "apps.post",
+    "apps.vote",
+    "apps.user_profile",
 ]
 
 REST_FRAMEWORK = {

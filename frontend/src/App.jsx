@@ -3,6 +3,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Home from "./pages/Home"
 import Place from "./pages/Place"
+import PlaceDetail from "./pages/PlaceDetail"
 import Post from "./pages/Post"
 import Activity from "./pages/Activity"
 import NotFound from "./pages/NotFound"
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/places" element={<Place />}></Route>
+        <Route path="/places/:id" element={<PlaceDetail />}></Route>
         <Route path="/activities" element={<Activity />}></Route>
         <Route path="/posts" element={<Post />}></Route>
         <Route path="/login" element={<Login />} />

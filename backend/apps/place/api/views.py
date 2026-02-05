@@ -1,4 +1,5 @@
-from rest_framework import views, viewsets, serializers
+from rest_framework import viewsets, serializers, permissions
+from rest_framework.decorators import action
 from ..models import Place
 
 
@@ -13,3 +14,4 @@ class PlaceViewSet(viewsets.ModelViewSet):
 
     queryset = Place.objects.all()  # type: ignore
     serializer_class = PlaceSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

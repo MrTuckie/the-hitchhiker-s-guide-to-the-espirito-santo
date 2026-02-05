@@ -13,3 +13,4 @@ class PostViewSet(viewsets.ModelViewSet):
 
     queryset = Post.objects.all()  # type:ignore
     serializer_class = PostSerializer
+    filterset_fields = ["place"]

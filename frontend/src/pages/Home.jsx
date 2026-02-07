@@ -1,6 +1,8 @@
 
 function Home() {
 
-  return <h1>home view</h1>
+  return (
+    <a href="/places/"><p>Places</p></a>
+  )
 }
 export default Home

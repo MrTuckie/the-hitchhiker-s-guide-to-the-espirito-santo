@@ -19,15 +19,24 @@ function PlantDetail() {
       .then((data) => { setPosts(data); console.log(data) })
       .catch((err) => alert(err))
   }
-
-
+  // Endereço padrão
+  let address = 'Onde os fracos não tem vez'
 
   if (!place) return <div>Place not found</div>;
+  if (place.address) {
+    address = `${place.address.street_name} - ${place.address.street_number}`
+  }
+  let default_post = 'Não tem posts aqui ainda, amigão. Seja o primeiro.'
+  if (posts.length) {
+    console.log('com posts')
+    default_post = posts.map((post) => (<p> post do lugar: {post.description}</p>))
+  }
   return (
     <div>
       <h1>{place.name}</h1>
+      <p><b>Endereço do lugar: {address}</b></p>
       <p>id do lugar {id}</p>
-      {posts.map((post) => (<p> post do lugar: {post.description}</p>))}
+      {default_post}
     </div>
   )
 }

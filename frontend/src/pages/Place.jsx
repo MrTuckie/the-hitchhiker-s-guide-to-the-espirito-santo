@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import api from "../api"
 import PlaceComponent from "../components/Place"
+import Navbar from "../components/Navbar";
 
 function Place() {
   const [places, setPlaces] = useState([]);
@@ -10,9 +11,11 @@ function Place() {
   const getPlaces = () => {
     api.get("/api/v1/places/").then((res) => res.data).then((data) => { setPlaces(data); console.log(data); }).catch((err) => alert(err));
   };
-  return (
+
+    return (
 
     <div>
+      <Navbar></Navbar>
       <h2>Places</h2>
       {places.map((place) => (
         <PlaceComponent place={place} key={place.id} />

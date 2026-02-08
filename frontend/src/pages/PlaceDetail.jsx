@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import api from "../api";
+import AddPostForm from "../components/Form";
 function PlantDetail() {
   const { id } = useParams()
   const [place, setPlace] = useState(null);
@@ -37,7 +38,9 @@ function PlantDetail() {
       <p><b>Endereço do lugar: {address}</b></p>
       <p>id do lugar {id}</p>
       {default_post}
-    </div>
+      <AddPostForm id={id}></AddPostForm>
+    </div >
+
   )
 }
 

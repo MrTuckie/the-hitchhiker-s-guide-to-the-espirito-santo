@@ -1,6 +1,11 @@
+from django.http import HttpResponse
 from rest_framework import viewsets, serializers, permissions
 from rest_framework.decorators import action
+from rest_framework.views import Response, status
+
+from apps.post.api.views import PostSerializer
 from ..models import Place
+from apps.post.models import Post
 
 
 class PlaceSerializer(serializers.ModelSerializer):
@@ -15,4 +20,17 @@ class PlaceViewSet(viewsets.ModelViewSet):
 
     queryset = Place.objects.all()  # type: ignore
     serializer_class = PlaceSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.AllowAny]
+
+    @action(detail=True, methods=["post"])
+    def add_post(self, request, pk=None):
+        """
+        TODO: Finish this function
+        funçao para adicionar posts para um lugar
+        """
+        place = Place.objects.get(id=pk)
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(place=place)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

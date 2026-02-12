@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_filters",
     "rest_framework",
+    "drf_spectacular",
     "apps.place",
     "apps.activity",
     "apps.post",
@@ -60,6 +61,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ],
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -138,3 +140,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "o guia do mochileiro capixaba",
+    "DESCRIPTION": "não entre em pânico!",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    # OTHER SETTINGS
+}

@@ -16,19 +16,23 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 from rest_framework.routers import DefaultRouter
-from apps.place.api.views import PlaceViewSet
-from django.contrib.auth.models import Group, User
-from rest_framework import permissions, viewsets, serializers
-from apps.user_profile.api.views import UserViewSet, GroupViewSet
 
-from apps.post.api.views import PostViewSet
 from apps.activity.api.views import ActivityViewSet
+from apps.place.api.views import PlaceViewSet
+from apps.post.api.views import PostViewSet
+from apps.user_profile.api.views import GroupViewSet, UserViewSet, UserProfileViewSet
 from apps.vote.api.views import VoteViewSet
 
 ROUTER = DefaultRouter()
 ROUTER.register(r"users", UserViewSet)  # OK
+ROUTER.register(r"profiles", UserProfileViewSet)  # OK
 ROUTER.register(r"groups", GroupViewSet)  # OK
 ROUTER.register(r"places", PlaceViewSet)
 ROUTER.register(r"posts", PostViewSet)
@@ -40,4 +44,17 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("api/v1/", include(ROUTER.urls)),
+    # YOUR PATTERNS
+    path("api/v1/schema/", SpectacularAPIView.as_view(), name="schema"),
+    # Optional UI:
+    path(
+        "api/v1/schema/swagger-ui/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path(
+        "api/v1/schema/redoc/",
+        SpectacularRedocView.as_view(url_name="schema"),
+        name="redoc",
+    ),
 ]

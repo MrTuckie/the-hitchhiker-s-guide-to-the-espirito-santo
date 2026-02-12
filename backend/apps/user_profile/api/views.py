@@ -1,11 +1,20 @@
 from rest_framework import viewsets, serializers, permissions
 from django.contrib.auth.models import User, Group
 
+from apps.user_profile.models import UserProfile
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ["url", "username", "email", "groups"]
+
+
+class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = "__all__"
+        depth = 1
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
@@ -31,4 +40,10 @@ class GroupViewSet(viewsets.ModelViewSet):
 
     queryset = Group.objects.all().order_by("name")
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    queryset = UserProfile.objects.all().order_by("-user__date_joined")  # type: ignore
+    serializer_class = UserProfileSerializer
     permission_classes = [permissions.IsAuthenticated]

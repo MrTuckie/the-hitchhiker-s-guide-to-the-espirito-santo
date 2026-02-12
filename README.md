@@ -19,7 +19,8 @@ que o sistema tenha:
 - [x] Um crud de lugares;
 - [x] Um crud de atividades dos lugares;
 - [x] Um crud de posts descritivos sobre os lugares.
-- [ ] adicionar o endereço dos lugares e do usuário
+- [x] adicionar o endereço dos lugares
+- [ ] E do usuário
 - user react no frontend
 - um sistema mínimo de votação para elencar os posts
 

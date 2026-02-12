@@ -1,11 +1,10 @@
-from django.http import HttpResponse
-from rest_framework import viewsets, serializers, permissions
+from rest_framework import permissions, serializers, viewsets
 from rest_framework.decorators import action
 from rest_framework.views import Response, status
 
 from apps.post.api.views import PostSerializer
+
 from ..models import Place
-from apps.post.models import Post
 
 
 class PlaceSerializer(serializers.ModelSerializer):

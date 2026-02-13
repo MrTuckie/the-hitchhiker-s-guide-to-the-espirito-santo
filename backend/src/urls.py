@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import base, include, path
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -35,9 +35,9 @@ ROUTER.register(r"users", UserViewSet)  # OK
 ROUTER.register(r"profiles", UserProfileViewSet)  # OK
 ROUTER.register(r"groups", GroupViewSet)  # OK
 ROUTER.register(r"places", PlaceViewSet)
-ROUTER.register(r"posts", PostViewSet)
+ROUTER.register(r"posts", PostViewSet, basename="posts")
 ROUTER.register(r"activities", ActivityViewSet)
-ROUTER.register(r"votes", VoteViewSet)
+ROUTER.register(r"votes", VoteViewSet, basename="votes")
 
 
 urlpatterns = [

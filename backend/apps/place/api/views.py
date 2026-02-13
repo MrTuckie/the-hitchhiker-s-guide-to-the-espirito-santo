@@ -32,4 +32,3 @@ class PlaceViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             serializer.save(place=place)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

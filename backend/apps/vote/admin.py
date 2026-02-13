@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.vote.models import Vote
+
+
+@admin.register(Vote)
+class VoteAdmin(admin.ModelAdmin):
+    pass

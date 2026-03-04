@@ -1,5 +1,21 @@
 # the-hitchhiker-s-guide-to-the-espirito-santo
 
+## rodando em dev
+
+o backend:
+
+```shell
+uv run manage.py runserver &
+# in backend/
+```
+
+o frontend:
+
+```shell
+npm run dev
+# in frontend/
+```
+
 ## o objetivo
 
 criar uma espécie de rede social em python-django para que as pessoas registrem

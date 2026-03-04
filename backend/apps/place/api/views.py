@@ -26,9 +26,17 @@ class PlaceViewSet(viewsets.ModelViewSet):
         """
         TODO: Finish this function
         funçao para adicionar posts para um lugar
+        TODO: Como o queryset é apenas Place, o endpoint daqui
+        só vai expor o campo name (pois place só tem name mesmo).
+        |Tem quem ver isso daí chefia.
         """
         place = Place.objects.get(id=pk)
         serializer = PostSerializer(data=request.data)
+        print(request.data)
         if serializer.is_valid():
             serializer.save(place=place)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(
+            {"message": f"{serializer.error_messages}"},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )

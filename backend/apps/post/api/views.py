@@ -18,7 +18,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     serializer_class = PostSerializer
     filterset_fields = ("place", "created_at")
-    filter_backends = (filters.OrderingFilter,)
+    filter_backends = (filters.OrderingFilter, filters.SearchFilter)
     ordering = ("-created_at",)
 
     def get_queryset(self):

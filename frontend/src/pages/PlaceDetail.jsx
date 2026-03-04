@@ -1,3 +1,9 @@
+/*
+ * TODO: Refatorar essa função, pois está um lixo. Além disso
+ * Eu tenho que anotar as informações que eu aprendi em algum lugar para
+ * não esquecer depois.
+ *
+*/
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import api from "../api";

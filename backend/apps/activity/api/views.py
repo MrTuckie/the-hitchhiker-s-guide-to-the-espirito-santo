@@ -11,3 +11,4 @@ class ActivitySerializer(serializers.ModelSerializer):
 class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()  # type:ignore
     serializer_class = ActivitySerializer
+    filterset_fields = ["place"]

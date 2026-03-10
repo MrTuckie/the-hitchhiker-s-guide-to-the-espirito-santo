@@ -6,6 +6,7 @@ import Place from "./pages/Place"
 import PlaceDetail from "./pages/PlaceDetail"
 import Post from "./pages/Post"
 import Activity from "./pages/Activity"
+import PlaceActivityDetail from "./pages/PlaceActivityDetail"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/places" element={<Place />}></Route>
         <Route path="/places/:id" element={<PlaceDetail />}></Route>
+        <Route path="/places/:id/activities" element={<PlaceActivityDetail />}></Route>
         <Route path="/activities" element={<Activity />}></Route>
         <Route path="/posts" element={<Post />}></Route>
         <Route path="/login" element={<Login />} />
